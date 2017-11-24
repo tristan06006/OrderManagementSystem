@@ -1,0 +1,219 @@
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Order Management System</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    @Html.Raw(JavaScriptSnippet.FullScript)
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (Convert.ToBoolean(Context.Session.GetString("IsLoggedIn")))
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        @*<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+                        <li><a asp-area="" asp-controller="Warehouse" asp-action="Index">Warehouse</a></li>
+                        <li><a asp-area="" asp-controller="District" asp-action="Index">District</a></li>
+                        <li><a asp-area="" asp-controller="Customer" asp-action="Index">Customer</a></li>
+                        <li><a asp-area="" asp-controller="Item" asp-action="Index">Item</a></li>
+                        <li><a asp-area="" asp-controller="Stock" asp-action="Index">Stock</a></li>
+                        <li><a asp-area="" asp-controller="Order" asp-action="Index">Order</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Register">Register</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Login">Login</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2017 - Order Management System</p>
+        </footer>
+    </div>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function (e) {
+                //alert('hello');
+                //$('.datepicker').datepicker({
+                //    showButton: true,
+                //    showButtonPanel: true,
+                //    dateFormat: 'mm/dd/yy'
+                //}).datepicker('setDate', new Date());
+
+
+                $('#C_D_ID').on('change', function (e) {
+                    alert($('#C_D_ID').val());
+                });
+
+                $('#btnAddOrder').on('click', function (e) {
+                    var rowCount = $('#tblOrderList tr').length;
+
+                    if (rowCount > 1) {
+                        var compareIndexValue = getCurrentRowIndex($('#OL_I_ID').val() + "_" + $('#OL_SUPPLY_W_ID').val());
+                        if (compareIndexValue > 0) {
+                            var updateValue = parseFloat($('tr.dataRow').eq(compareIndexValue-1).find('td').eq(4).html()) + parseFloat($('#OL_QUANTITY').val());
+                            $('tr.dataRow').eq(compareIndexValue-1).find('td').eq(4).html(updateValue);
+                        }
+                        else {
+
+                            $('#tblOrderList tr:last').after('<tr class="dataRow"><td style="display:none;">' + $('#OL_I_ID').val() + '</td><td>' + $('#OL_I_ID :selected').text() + '</td><td style="display:none;">' + $('#OL_SUPPLY_W_ID').val() + '</td><td>' + $('#OL_SUPPLY_W_ID :selected').text() + '</td><td>' + $('#OL_QUANTITY').val() + '</td><td><input type="button" class="btn btn-default" value="Delete" onclick="Remove(this);" /></td></tr>');
+                        }
+                    }
+
+                    else if (rowCount == 1) {
+                        $('#tblOrderList tr:last').after('<tr class="dataRow"><td style="display:none;">' + $('#OL_I_ID').val() + '</td><td>' + $('#OL_I_ID :selected').text() + '</td><td style="display:none;">' + $('#OL_SUPPLY_W_ID').val() + '</td><td>' + $('#OL_SUPPLY_W_ID :selected').text() + '</td><td>' + $('#OL_QUANTITY').val() + '</td><td><input type="button" class="btn btn-default" value="Delete" onclick="Remove(this);" /></td></tr>');
+                    }
+
+                });
+
+
+                $('#btnSaveOrder').on('click', function (e) {
+                    var isLocal = false;
+                    if ($("#O_ALL_LOCAL").is(':checked')) {
+                        isLocal = true;
+                    }
+                    else
+                        isLocal = false;
+
+                    var OrderData = {
+                        O_W_ID : $('#O_W_ID').val(),
+                        O_D_ID : $('#O_D_ID').val(),
+                        O_C_ID : $('#O_C_ID').val(),
+                        O_ALL_LOCAL: isLocal,
+                        OrderLists: GetOrderListsItems()
+                    };
+                    
+                    if (OrderData) {
+                        if (OrderData.OrderLists.length > 15) {
+                            alert('Error');
+                            return false
+                        }
+                        else {
+                            $.ajax({
+                                url: '@Url.Action("Save", "Order")',
+                                type: 'POST',
+                                data: JSON.stringify(OrderData),
+                                contentType: 'application/json; charset=utf-8',
+                                cache: false,
+                                async: true,
+                                success: function (result) {
+                                    alert('Successfull');
+                                },
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    alert(xhr.responseText);
+                                }
+                            });
+                        }
+                    }
+
+                });
+
+                //$("#tbDistrict").tabs();
+            });
+
+            function GetOrderListsItems() {
+
+                var OrderLists = new Array();
+
+                $('tr.dataRow').each(function () {
+                    OrderLists.push({ OL_I_ID: $(this).find('td').eq(0).html(), OL_SUPPLY_W_ID: $(this).find('td').eq(2).html(), OL_QUANTITY: $(this).find('td').eq(4).html() });
+                });
+
+
+                return OrderLists;
+
+
+            }
+
+            function isNumberKey(evt) {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return false;
+
+                return true;
+            }
+            function getCurrentRowIndex(inputValue)
+            {
+                var compareIndex = 0;
+                //$('#tblOrderList tr').each(function () {
+                $('tr.dataRow').each(function () {
+                    var tableValue = $(this).find('td').eq(0).html() + "_" + $(this).find('td').eq(2).html();
+                    if (inputValue == tableValue) {
+                        compareIndex = $(this).index();
+                        return compareIndex;
+                    }
+                });
+
+                return compareIndex;
+            }
+
+            function Remove(button) {
+
+                //Determine the reference of the Row using the Button.
+                var row = $(button).closest("TR");
+                var table = $("#tblOrderList")[0];
+                table.deleteRow(row[0].rowIndex);
+
+                //var name = $("TD", row).eq(0).html();
+                //if (confirm("Do you want to delete: " + name)) {
+
+                //    var table = $("#tblOrderList")[0];
+
+
+                //    table.deleteRow(row[0].rowIndex);
+                //}
+            };
+
+        </script>
+
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

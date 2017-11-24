@@ -1,0 +1,9 @@
+C:\Course_Works\Distributed_Database_System\Bluemix\OrderManagement\OMS\OMS\bin\Debug\netcoreapp1.0\OMS.deps.json
+C:\Course_Works\Distributed_Database_System\Bluemix\OrderManagement\OMS\OMS\bin\Debug\netcoreapp1.0\OMS.runtimeconfig.json
+C:\Course_Works\Distributed_Database_System\Bluemix\OrderManagement\OMS\OMS\bin\Debug\netcoreapp1.0\OMS.runtimeconfig.dev.json
+C:\Course_Works\Distributed_Database_System\Bluemix\OrderManagement\OMS\OMS\bin\Debug\netcoreapp1.0\OMS.dll
+C:\Course_Works\Distributed_Database_System\Bluemix\OrderManagement\OMS\OMS\bin\Debug\netcoreapp1.0\OMS.pdb
+C:\Course_Works\Distributed_Database_System\Bluemix\OrderManagement\OMS\OMS\obj\Debug\netcoreapp1.0\OMS.csprojResolveAssemblyReference.cache
+C:\Course_Works\Distributed_Database_System\Bluemix\OrderManagement\OMS\OMS\obj\Debug\netcoreapp1.0\OMS.AssemblyInfo.cs
+C:\Course_Works\Distributed_Database_System\Bluemix\OrderManagement\OMS\OMS\obj\Debug\netcoreapp1.0\OMS.dll
+C:\Course_Works\Distributed_Database_System\Bluemix\OrderManagement\OMS\OMS\obj\Debug\netcoreapp1.0\OMS.pdb

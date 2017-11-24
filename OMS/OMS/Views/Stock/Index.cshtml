@@ -1,0 +1,54 @@
+
+@model IEnumerable<OMS.Models.Stock>
+
+    @{
+        ViewData["Title"] = "List of Stock";
+    }
+
+    <h2>List of Stock</h2>
+
+    <p>
+        <a asp-action="Create">Add New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Warehouse </th>
+                <th>Item </th>
+                <th>Quantity </th>
+                <th>Year to Date Payment</th>
+                <th>Information</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.S_W_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.S_I_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.S_QUANTITY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.S_YTD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.S_DATA)
+                    </td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item._id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item._id">Details</a>
+                        @*<a asp-action="Delete" asp-route-id="@item._id">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+

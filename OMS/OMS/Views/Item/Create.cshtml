@@ -1,0 +1,95 @@
+@model OMS.Models.Item
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Item</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+       
+                @*<div class="form-group">
+            <label asp-for="TableName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TableName" class="form-control" />
+                <span asp-validation-for="TableName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="I_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="I_ID" class="form-control" />
+                <span asp-validation-for="I_ID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+            <label asp-for="_id" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_id" class="form-control" />
+                <span asp-validation-for="_id" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="_rev" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_rev" class="form-control" />
+                <span asp-validation-for="_rev" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="internalDocType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="internalDocType" class="form-control" />
+                <span asp-validation-for="internalDocType" class="text-danger"></span>
+            </div>
+        </div>
+
+        </div>*@
+
+        <div class="form-group">
+            <label asp-for="I_NAME" class="col-md-2 control-label">Name</label>
+            <div class="col-md-10">
+                <input asp-for="I_NAME" class="form-control" />
+                <span asp-validation-for="I_NAME" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="I_PRICE" class="col-md-2 control-label">Price</label>
+            <div class="col-md-10">
+                <input asp-for="I_PRICE" class="form-control" onkeypress="return isNumberKey(event)"/>
+                <span asp-validation-for="I_PRICE" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="I_DATA" class="col-md-2 control-label">Brand</label>
+            <div class="col-md-10">
+                <input asp-for="I_DATA" class="form-control" />
+                <span asp-validation-for="I_DATA" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="I_IM_ID" class="col-md-2 control-label">Upload Image</label>
+            <div class="col-md-10">
+                <input asp-for="I_IM_ID" class="form-control" />
+                <span asp-validation-for="I_IM_ID" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

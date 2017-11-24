@@ -1,0 +1,45 @@
+@model IEnumerable<OMS.Models.Item>
+
+    @{
+        ViewData["Title"] = "List of Items";
+    }
+
+    <h2>List of Items</h2>
+
+    <p>
+        <a asp-action="Create">Add New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name </th>
+                <th>Price </th>
+                <th>Brand </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.I_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.I_PRICE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.I_DATA)
+                    </td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item._id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item._id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item._id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+

@@ -1,0 +1,73 @@
+@model OMS.Models.Warehouse
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Warehouse</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Warehouse Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.W_NAME)
+        </dd>
+
+        <dt>
+           Street 1
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.W_STREET_1)
+        </dd>
+        
+        <dt>
+            Street 2
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.W_STREET_2)
+        </dd>
+
+        <dt>
+            City
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.W_CITY)
+        </dd>
+        
+        <dt>
+           State
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.W_STATE)
+        </dd>
+
+        <dt>
+            ZIP
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.W_ZIP)
+        </dd>
+        
+        <dt>
+            Sales Tax
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.W_TAX)
+        </dd>
+
+        <dt>
+            Year to Date Balance
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.W_WTD)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model._id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

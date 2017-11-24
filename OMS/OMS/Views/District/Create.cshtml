@@ -1,0 +1,199 @@
+@model OMS.Models.District
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#first" aria-controls="first" role="tab" data-toggle="tab">Manual</a>
+    </li>
+    <li role="presentation">
+        <a href="#second" aria-controls="second" role="tab" data-toggle="tab">Upload using excel</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="first">
+        <form asp-action="Create">
+
+            <div class="form-horizontal">
+                @*<h4>District</h4>*@
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<div class="form-group">
+                    <label asp-for="TableName" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="TableName" class="form-control" />
+                        <span asp-validation-for="TableName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="D_ID" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="D_ID" class="form-control" />
+                        <span asp-validation-for="D_ID" class="text-danger"></span>
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    <label asp-for="D_W_ID" class="col-md-2 control-label">Warehouse</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(r => r.D_W_ID, new SelectList(Model.WatehouseLists, "_id", "W_NAME", "-Selected-"), new { @class = "form-control" })
+                        <span asp-validation-for="D_W_ID" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="D_NAME" class="col-md-2 control-label">District Name</label>
+                    <div class="col-md-10">
+                        <input asp-for="D_NAME" class="form-control" />
+                        <span asp-validation-for="D_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="D_STREET_1" class="col-md-2 control-label">Street 1</label>
+                    <div class="col-md-10">
+                        <input asp-for="D_STREET_1" class="form-control" />
+                        <span asp-validation-for="D_STREET_1" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="D_STREET_2" class="col-md-2 control-label">Street 2</label>
+                    <div class="col-md-10">
+                        <input asp-for="D_STREET_2" class="form-control" />
+                        <span asp-validation-for="D_STREET_2" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="D_CITY" class="col-md-2 control-label">City</label>
+                    <div class="col-md-10">
+                        <input asp-for="D_CITY" class="form-control" />
+                        <span asp-validation-for="D_CITY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="D_STATE" class="col-md-2 control-label">State</label>
+                    <div class="col-md-10">
+                        <input asp-for="D_STATE" class="form-control" />
+                        <span asp-validation-for="D_STATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="D_ZIP" class="col-md-2 control-label">ZIP</label>
+                    <div class="col-md-10">
+                        <input asp-for="D_ZIP" class="form-control" />
+                        <span asp-validation-for="D_ZIP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="D_TAX" class="col-md-2 control-label">Sales TAX</label>
+                    <div class="col-md-10">
+                        <input asp-for="D_TAX" class="form-control" onkeypress="return isNumberKey(event)"/>
+                        <span asp-validation-for="D_TAX" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="D_YTD" class="col-md-2 control-label">Year to date Balance</label>
+                    <div class="col-md-10">
+                        <input asp-for="D_YTD" class="form-control" onkeypress="return isNumberKey(event)" />
+                        <span asp-validation-for="D_YTD" class="text-danger"></span>
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    <label asp-for="D_NEXT_O_ID" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="D_NEXT_O_ID" class="form-control" />
+                        <span asp-validation-for="D_NEXT_O_ID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="_id" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="_id" class="form-control" />
+                        <span asp-validation-for="_id" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="_rev" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="_rev" class="form-control" />
+                        <span asp-validation-for="_rev" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="internalDocType" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="internalDocType" class="form-control" />
+                        <span asp-validation-for="internalDocType" class="text-danger"></span>
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="second">
+        <form asp-action="UploadUsingExcell">
+
+            <div class="form-horizontal">
+                @*<h4>District</h4>*@
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<div class="form-group">
+                    <label asp-for="TableName" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="TableName" class="form-control" />
+                        <span asp-validation-for="TableName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="D_ID" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="D_ID" class="form-control" />
+                        <span asp-validation-for="D_ID" class="text-danger"></span>
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    <label asp-for="D_W_ID" class="col-md-2 control-label">Warehouse</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(r => r.D_W_ID, new SelectList(Model.WatehouseLists, "_id", "W_NAME", "-Selected-"), new { @class = "form-control" })
+                        <span asp-validation-for="D_W_ID" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="FileToUpload" class="col-md-2 control-label">Upload</label>
+                    <div class="col-md-10">
+                        <input asp-for="FileToUpload" type="file" class="form-control" />
+                        <span asp-validation-for="FileToUpload" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                
+               
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

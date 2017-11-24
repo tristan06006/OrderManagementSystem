@@ -1,0 +1,87 @@
+@model OMS.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>New Order</h1>
+
+<div>
+    <hr />
+    <table>
+        <tr>
+            <td style="width:100px; font-weight:bold;">Warehouse</td> <td style="width:400px;">: @Html.DisplayFor(model => model.O_W_NAME)</td>
+            <td style="width:120px; font-weight:bold;">District</td> <td style="width:150px;">: @Html.DisplayFor(model => model.O_D_NAME)</td>
+            <td style="width:50px; font-weight:bold;">Date</td> <td>: @Html.DisplayFor(model => model.O_ENTRY_D)</td>
+            
+        </tr>
+        <tr>
+            <td style="width:100px; font-weight:bold;">Customer </td> <td style="width:400px;">: @Html.DisplayFor(model => model.O_C_ID)</td>
+            <td style="width:120px; font-weight:bold;">Name </td> <td>: @Html.DisplayFor(model => model.O_C_NAME)</td>
+            <td style="font-weight:bold;">Credit </td> <td>: @Html.DisplayFor(model => model.O_C_CEDIT)</td>
+            <td style="font-weight:bold;">Discount </td> <td>: @Html.DisplayFor(model => model.O_C_DISCOUNT)</td>
+        </tr>
+        <tr>
+            <td style="width:100px; font-weight:bold;">Order Number </td> <td style="width:400px;">: @Html.DisplayFor(model => model.O_ID)</td>
+            <td style="width:120px; font-weight:bold;">Number of Lines </td> <td>: @Html.DisplayFor(model => model.O_OL_CNT)</td>
+            <td style="font-weight:bold;">W-TAX </td> <td>: @Html.DisplayFor(model => model.O_W_TAX)</td>
+            <td style="font-weight:bold;">D-TAX </td> <td>: @Html.DisplayFor(model => model.O_D_TAX)</td>
+        </tr>
+    </table>
+    <dl class="dl-horizontal">
+       
+
+    </dl>
+    <h3>Order Details</h3>
+    <hr />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Supplier Warehouse </th>
+                <th>Item Id </th>
+                <th>Item Name </th>
+                <th>Quantity </th>
+                <th>Stock </th>
+                <th>B/G</th>
+                <th>Price</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderLineItems)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OL_SUPPLY_W_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OL_I_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OL_I_NAME)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OL_QUANTITY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OL_Stock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OL_BG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OL_PRICE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OL_AMOUNT)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

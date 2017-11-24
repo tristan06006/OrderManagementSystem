@@ -1,0 +1,95 @@
+@model OMS.Models.Warehouse
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Warehouse</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @*<div class="form-group" hidden>
+        <label asp-for="_id" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="_id" class="form-control" />
+            <span asp-validation-for="_id" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group" hidden>
+        <label asp-for="W_ID" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="W_ID" class="form-control" />
+            <span asp-validation-for="W_ID" class="text-danger"></span>
+        </div>
+    </div>*@
+        <div class="form-group">
+            <label asp-for="W_NAME" class="col-md-2 control-label">Warehouse Name</label>
+            <div class="col-md-10">
+                <input asp-for="W_NAME" class="form-control" />
+                <span asp-validation-for="W_NAME" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="W_STREET_1" class="col-md-2 control-label">Street 1</label>
+            <div class="col-md-10">
+                <input asp-for="W_STREET_1" class="form-control" />
+                <span asp-validation-for="W_STREET_1" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="W_STREET_2" class="col-md-2 control-label">Street 2</label>
+            <div class="col-md-10">
+                <input asp-for="W_STREET_2" class="form-control" />
+                <span asp-validation-for="W_STREET_2" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="W_CITY" class="col-md-2 control-label">City</label>
+            <div class="col-md-10">
+                <input asp-for="W_CITY" class="form-control" />
+                <span asp-validation-for="W_CITY" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="W_STATE" class="col-md-2 control-label">State</label>
+            <div class="col-md-10">
+                <input asp-for="W_STATE" class="form-control" />
+                <span asp-validation-for="W_STATE" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="W_ZIP" class="col-md-2 control-label">ZIP</label>
+            <div class="col-md-10">
+                <input asp-for="W_ZIP" class="form-control" />
+                <span asp-validation-for="W_ZIP" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="W_TAX" class="col-md-2 control-label">Sales TAX</label>
+            <div class="col-md-10">
+                <input asp-for="W_TAX" class="form-control" onkeypress="return isNumberKey(event)"/>
+                <span asp-validation-for="W_TAX" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="W_WTD" class="col-md-2 control-label">Year to Date Balance</label>
+            <div class="col-md-10">
+                <input asp-for="W_WTD" class="form-control" onkeypress="return isNumberKey(event)"/>
+                <span asp-validation-for="W_WTD" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

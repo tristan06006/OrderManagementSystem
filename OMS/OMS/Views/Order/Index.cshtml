@@ -1,0 +1,55 @@
+
+@model IEnumerable<OMS.Models.Order>
+
+    @{
+        ViewData["Title"] = "List of Order";
+    }
+
+    <h2>List of Order</h2>
+
+    <p>
+        <a asp-action="Create">New Order</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Warehouse </th>
+                <th>District </th>
+                <th>Customer </th>
+                <th>Order Date </th>
+                <th>Total Order </th>
+                <th>Local?</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.O_W_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.O_D_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.O_C_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.O_ENTRY_D)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.O_OL_CNT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.O_ALL_LOCAL)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item._id">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+

@@ -1,0 +1,109 @@
+@model OMS.Models.Order
+
+@{
+    ViewData["Title"] = "New Order";
+}
+
+<h2>New Order</h2>
+<hr />
+<form asp-action="Create">
+    <div class="form-horizontal">
+
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="O_W_ID" class="col-md-2 control-label">Warehouse</label>
+            <div class="col-md-2">
+                @Html.DropDownListFor(r => r.O_W_ID, new SelectList(Model.WatehouseLists, "_id", "W_NAME", "-Selected-"), new { @class = "form-control" })
+                <span asp-validation-for="O_W_ID" class="text-danger"></span>
+            </div>
+
+            <label asp-for="O_D_ID" class="col-md-2 control-label">District</label>
+            <div class="col-md-2">
+                @Html.DropDownListFor(r => r.O_D_ID, new SelectList(Model.DistrictLists, "_id", "D_NAME", "-Selected-"), new { @class = "form-control" })
+                <span asp-validation-for="O_D_ID" class="text-danger"></span>
+            </div>
+
+            <label asp-for="O_C_ID" class="col-md-2 control-label">Customer</label>
+            <div class="col-md-2">
+                @Html.DropDownListFor(r => r.O_C_ID, new SelectList(Model.CustomerLists, "_id", "C_FIRST", "-Selected-"), new { @class = "form-control" })
+                <span asp-validation-for="O_C_ID" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <label asp-for="OL_I_ID" class="col-md-2 control-label">Item</label>
+            <div class="col-md-2">
+                @Html.DropDownListFor(r => r.OL_I_ID, new SelectList(Model.ItemLists, "_id", "I_NAME", "-Selected-"), new { @class = "form-control" })
+                <span asp-validation-for="OL_I_ID" class="text-danger"></span>
+            </div>
+
+            <label asp-for="OL_SUPPLY_W_ID" class="col-md-2 control-label">Supplier Warehouse</label>
+            <div class="col-md-2">
+                @Html.DropDownListFor(r => r.OL_SUPPLY_W_ID, new SelectList(Model.ViewSupplierWarehouseLists, "_id", "SUPPLY_W_NAME", "-Selected-"), new { @class = "form-control" })
+                <span asp-validation-for="OL_SUPPLY_W_ID" class="text-danger"></span>
+            </div>
+
+            <label asp-for="OL_QUANTITY" class="col-md-2 control-label">Quantity</label>
+            <div class="col-md-2">
+                <input asp-for="OL_QUANTITY" class="form-control" onkeypress="return isNumberKey(event)" />
+                <span asp-validation-for="OL_QUANTITY" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                <label asp-for="O_OL_CNT" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="O_OL_CNT" class="form-control" />
+                    <span asp-validation-for="O_OL_CNT" class="text-danger"></span>
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <div class="checkbox">
+                    <input asp-for="O_ALL_LOCAL" />
+                    <label asp-for="O_ALL_LOCAL">Local</label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <input id="btnAddOrder" type="button" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+
+        <hr />
+        <h2>List of Order</h2>
+        <hr />
+
+        <div class="form-group" id="dvOrderList">
+            <table id="tblOrderList" class="table">
+                <thead>
+                    <tr>
+                        <th>Item </th>
+                        <th>Supplier Warehouse</th>
+                        <th>Quantity </th>
+                        <th>Action </th>
+                    </tr>
+                </thead>
+                <tbody id="tblBdyOrderList">
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="btnSaveOrder" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

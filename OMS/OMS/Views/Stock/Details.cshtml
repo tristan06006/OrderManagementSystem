@@ -1,0 +1,122 @@
+@model OMS.Models.Stock
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>District</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Warehouse Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_W_NAME)
+        </dd>
+
+        <dt>
+            Item Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_I_NAME)
+        </dd>
+
+        <dt>
+            Quantity
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_QUANTITY)
+        </dd>
+        <dt>
+            District 1
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DIST_01_VALUE)
+        </dd>
+
+        <dt>
+            District 2
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DIST_02_VALUE)
+        </dd>
+
+        <dt>
+            District 3
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DIST_03_VALUE)
+        </dd>
+
+        <dt>
+            District 4
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DIST_04_VALUE)
+        </dd>
+
+        <dt>
+            District 5
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DIST_05_VALUE)
+        </dd>
+
+        <dt>
+            District 6
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DIST_06_VALUE)
+        </dd>
+
+        <dt>
+            District 7
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DIST_07_VALUE)
+        </dd>
+
+        <dt>
+            District 8
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DIST_08_VALUE)
+        </dd>
+
+        <dt>
+            District 9
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DIST_09_VALUE)
+        </dd>
+
+        <dt>
+            District 10
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DIST_10_VALUE)
+        </dd>
+
+        <dt>
+           Year to Date Balance
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_YTD)
+        </dd>
+
+        <dt>
+            Information
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.S_DATA)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model._id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

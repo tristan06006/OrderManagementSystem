@@ -1,0 +1,206 @@
+@model OMS.Models.Customer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Customer</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group" hidden>
+            <label asp-for="TableName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TableName" class="form-control" />
+                <span asp-validation-for="TableName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="C_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="C_ID" class="form-control" />
+                <span asp-validation-for="C_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="C_PAYMENT_CNT" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="C_PAYMENT_CNT" class="form-control" />
+                <span asp-validation-for="C_PAYMENT_CNT" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="C_DELIVERY_CNT" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="C_DELIVERY_CNT" class="form-control" />
+                <span asp-validation-for="C_DELIVERY_CNT" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="_id" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_id" class="form-control" />
+                <span asp-validation-for="_id" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="_rev" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_rev" class="form-control" />
+                <span asp-validation-for="_rev" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="internalDocType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="internalDocType" class="form-control" />
+                <span asp-validation-for="internalDocType" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="C_W_ID" class="col-md-2 control-label">Warehouse</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(r => r.C_W_ID, new SelectList(Model.WatehouseLists, "_id", "W_NAME", Model.C_W_ID), new { @class = "form-control" })
+                <span asp-validation-for="C_W_ID" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="C_D_ID" class="col-md-2 control-label">District</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(r => r.C_D_ID, new SelectList(Model.DistrictLists, "_id", "D_NAME", Model.C_D_ID), new { @class = "form-control" })
+                <span asp-validation-for="C_D_ID" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="C_FIRST" class="col-md-2 control-label">First Name</label>
+            <div class="col-md-10">
+                <input asp-for="C_FIRST" class="form-control" />
+                <span asp-validation-for="C_FIRST" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_MIDDLE" class="col-md-2 control-label">Middle Initial</label>
+            <div class="col-md-10">
+                <input asp-for="C_MIDDLE" class="form-control" />
+                <span asp-validation-for="C_MIDDLE" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_LAST" class="col-md-2 control-label">Last Name</label>
+            <div class="col-md-10">
+                <input asp-for="C_LAST" class="form-control" />
+                <span asp-validation-for="C_LAST" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_STREET_1" class="col-md-2 control-label">Street 1</label>
+            <div class="col-md-10">
+                <input asp-for="C_STREET_1" class="form-control" />
+                <span asp-validation-for="C_STREET_1" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_STREET_2" class="col-md-2 control-label">Street 2</label>
+            <div class="col-md-10">
+                <input asp-for="C_STREET_2" class="form-control" />
+                <span asp-validation-for="C_STREET_2" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_CITY" class="col-md-2 control-label">City</label>
+            <div class="col-md-10">
+                <input asp-for="C_CITY" class="form-control" />
+                <span asp-validation-for="C_CITY" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_STATE" class="col-md-2 control-label">State</label>
+            <div class="col-md-10">
+                <input asp-for="C_STATE" class="form-control" />
+                <span asp-validation-for="C_STATE" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_ZIP" class="col-md-2 control-label">ZIP</label>
+            <div class="col-md-10">
+                <input asp-for="C_ZIP" class="form-control" />
+                <span asp-validation-for="C_ZIP" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_PHONE" class="col-md-2 control-label">Phone</label>
+            <div class="col-md-10">
+                <input asp-for="C_PHONE" class="form-control" />
+                <span asp-validation-for="C_PHONE" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_SINCE" class="col-md-2 control-label">Since</label>
+            <div class="col-md-10">
+                <input asp-for="C_SINCE" class="form-control" />
+                <span asp-validation-for="C_SINCE" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_CREDIT" class="col-md-2 control-label">Credit</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(r => r.C_CREDIT, new SelectList(Model.CustomerCreditLists, "id", "name", Model.C_CREDIT), new { @class = "form-control" })
+                <span asp-validation-for="C_CREDIT" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_CREDIT_LIM" class="col-md-2 control-label">Credit Limit</label>
+            <div class="col-md-10">
+                <input asp-for="C_CREDIT_LIM" class="form-control" onkeypress="return isNumberKey(event)"/>
+                <span asp-validation-for="C_CREDIT_LIM" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_DISCOUNT" class="col-md-2 control-label">Discount</label>
+            <div class="col-md-10">
+                <input asp-for="C_DISCOUNT" class="form-control" onkeypress="return isNumberKey(event)"/>
+                <span asp-validation-for="C_DISCOUNT" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_BALANCE" class="col-md-2 control-label">Balance</label>
+            <div class="col-md-10">
+                <input asp-for="C_BALANCE" class="form-control" onkeypress="return isNumberKey(event)"/>
+                <span asp-validation-for="C_BALANCE" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C_YTD_PAYMENT" class="col-md-2 control-label">Year to Date Payment</label>
+            <div class="col-md-10">
+                <input asp-for="C_YTD_PAYMENT" class="form-control" onkeypress="return isNumberKey(event)"/>
+                <span asp-validation-for="C_YTD_PAYMENT" class="text-danger"></span>
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <label asp-for="C_DATA" class="col-md-2 control-label">Miscellaneous</label>
+            <div class="col-md-10">
+                <input asp-for="C_DATA" class="form-control" />
+                <span asp-validation-for="C_DATA" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

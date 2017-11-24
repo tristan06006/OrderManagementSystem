@@ -1,0 +1,61 @@
+
+@model IEnumerable<OMS.Models.Warehouse>
+
+    @{
+        ViewData["Title"] = "List of Warehouses";
+    }
+
+    <h2>List of Warehouses</h2>
+
+    <p>
+        <a asp-action="Create">Add New</a>
+    </p>
+  <table class="table">
+        <thead>
+            <tr>
+                <th>Name </th>
+                <th>Street </th>
+                <th>City </th>
+                <th>State</th>
+                <th>ZIP</th>
+                <th>Sales TAX</th>
+                <th>Year to Date Balance</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.W_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.W_STREET_1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.W_CITY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.W_STATE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.W_ZIP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.W_TAX)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.W_WTD)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item._id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item._id">Details</a> 
+                        @*<a asp-action="Delete" asp-route-id="@item._id">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+

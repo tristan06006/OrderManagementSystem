@@ -1,0 +1,14 @@
+{
+  "name": "datetimepicker",
+  "homepage": "https://github.com/xdan/datetimepicker",
+  "_release": "v.1.0.1",
+  "_resolution": {
+    "type": "tag",
+    "tag": "v.1.0.1",
+    "commit": "e01aac52b236abc0401fed7f5f67b5cf0c74b40f"
+  },
+  "_source": "https://github.com/xdan/datetimepicker.git",
+  "_target": "v.1.0.1",
+  "_originalSource": "datetimepicker",
+  "_direct": true
+}

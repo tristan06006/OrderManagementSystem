@@ -1,0 +1,258 @@
+@model OMS.Models.Stock
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    
+
+    <div class="form-horizontal">
+        <h4>Stock</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @*<div class="form-group">
+                <label asp-for="TableName" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="TableName" class="form-control" />
+                    <span asp-validation-for="TableName" class="text-danger"></span>
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <label asp-for="S_W_ID" class="col-md-2 control-label">Warehouse</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(r => r.S_W_ID, new SelectList(Model.WatehouseLists, "_id", "W_NAME", "-Selected-"), new { @class = "form-control" })
+                <span asp-validation-for="S_W_ID" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="S_I_ID" class="col-md-2 control-label">Item</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(r => r.S_I_ID, new SelectList(Model.ItemLists, "_id", "I_NAME", "-Selected-"), new { @class = "form-control" })
+                <span asp-validation-for="S_I_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_QUANTITY" class="col-md-2 control-label">Quantity</label>
+            <div class="col-md-10">
+                <input asp-for="S_QUANTITY" class="form-control" onkeypress="return isNumberKey(event)"/>
+                <span asp-validation-for="S_QUANTITY" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="S_DIST_01_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_01_ID" class="form-control" hidden />
+                <span asp-validation-for="S_DIST_01_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_DIST_01_VALUE" class="col-md-2 control-label">District 1</label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_01_VALUE" class="form-control" ReadOnly="readonly" />
+                <span asp-validation-for="S_DIST_01_VALUE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="S_DIST_02_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_02_ID" class="form-control" />
+                <span asp-validation-for="S_DIST_02_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_DIST_02_VALUE" class="col-md-2 control-label">District 2</label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_02_VALUE" class="form-control" ReadOnly="readonly" />
+                <span asp-validation-for="S_DIST_02_VALUE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="S_DIST_03_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_03_ID" class="form-control" />
+                <span asp-validation-for="S_DIST_03_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_DIST_03_VALUE" class="col-md-2 control-label">District 3</label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_03_VALUE" class="form-control" ReadOnly="readonly" />
+                <span asp-validation-for="S_DIST_03_VALUE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="S_DIST_04_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_04_ID" class="form-control" />
+                <span asp-validation-for="S_DIST_04_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_DIST_04_VALUE" class="col-md-2 control-label">District 4</label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_04_VALUE" class="form-control" ReadOnly="readonly" />
+                <span asp-validation-for="S_DIST_04_VALUE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="S_DIST_05_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_05_ID" class="form-control" />
+                <span asp-validation-for="S_DIST_05_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_DIST_05_VALUE" class="col-md-2 control-label">District 5</label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_05_VALUE" class="form-control" ReadOnly="readonly" />
+                <span asp-validation-for="S_DIST_05_VALUE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="S_DIST_06_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_06_ID" class="form-control" />
+                <span asp-validation-for="S_DIST_06_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_DIST_06_VALUE" class="col-md-2 control-label">District 6</label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_06_VALUE" class="form-control" ReadOnly="readonly" />
+                <span asp-validation-for="S_DIST_06_VALUE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="S_DIST_07_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_07_ID" class="form-control" />
+                <span asp-validation-for="S_DIST_07_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_DIST_07_VALUE" class="col-md-2 control-label">District 7</label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_07_VALUE" class="form-control" ReadOnly="readonly" />
+                <span asp-validation-for="S_DIST_07_VALUE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="S_DIST_08_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_08_ID" class="form-control" />
+                <span asp-validation-for="S_DIST_08_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_DIST_08_VALUE" class="col-md-2 control-label">District 8</label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_08_VALUE" class="form-control" ReadOnly="readonly" />
+                <span asp-validation-for="S_DIST_08_VALUE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="S_DIST_09_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_09_ID" class="form-control" />
+                <span asp-validation-for="S_DIST_09_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_DIST_09_VALUE" class="col-md-2 control-label">District 9</label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_09_VALUE" class="form-control" ReadOnly="readonly" />
+                <span asp-validation-for="S_DIST_09_VALUE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="S_DIST_10_ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_10_ID" class="form-control" />
+                <span asp-validation-for="S_DIST_10_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="S_DIST_10_VALUE" class="col-md-2 control-label">District 10</label>
+            <div class="col-md-10">
+                <input asp-for="S_DIST_10_VALUE" class="form-control" ReadOnly="readonly" />
+                <span asp-validation-for="S_DIST_10_VALUE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="S_YTD" class="col-md-2 control-label">Year to Date Balance</label>
+            <div class="col-md-10">
+                <input asp-for="S_YTD" class="form-control" onkeypress="return isNumberKey(event)" />
+                <span asp-validation-for="S_YTD" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="S_DATA" class="col-md-2 control-label">Information</label>
+            <div class="col-md-10">
+                <input asp-for="S_DATA" class="form-control" />
+                <span asp-validation-for="S_DATA" class="text-danger"></span>
+            </div>
+        </div>
+        @*<div class="form-group">
+                <label asp-for="S_ORDER_CNT" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="S_ORDER_CNT" class="form-control" />
+                    <span asp-validation-for="S_ORDER_CNT" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="S_REMOTE_CNT" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="S_REMOTE_CNT" class="form-control" />
+                    <span asp-validation-for="S_REMOTE_CNT" class="text-danger"></span>
+                </div>
+            </div>
+                <div class="form-group">
+                <label asp-for="_id" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="_id" class="form-control" />
+                    <span asp-validation-for="_id" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="_rev" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="_rev" class="form-control" />
+                    <span asp-validation-for="_rev" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="internalDocType" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="internalDocType" class="form-control" />
+                    <span asp-validation-for="internalDocType" class="text-danger"></span>
+                </div>
+            </div>*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

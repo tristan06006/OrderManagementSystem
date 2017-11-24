@@ -1,0 +1,157 @@
+@model OMS.Models.Customer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>District</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Warehouse Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_W_NAME)
+        </dd>
+
+        <dt>
+            District Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_D_NAME)
+        </dd>
+
+        <dt>
+            First Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_FIRST)
+        </dd>
+        <dt>
+            Middle Initial
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_MIDDLE)
+        </dd>
+
+        <dt>
+            Last Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_LAST)
+        </dd>
+
+        <dt>
+            Street 1
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_STREET_1)
+        </dd>
+
+        <dt>
+            Street 2
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_STREET_2)
+        </dd>
+
+        <dt>
+            City
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_CITY)
+        </dd>
+
+        <dt>
+            State
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_STATE)
+        </dd>
+
+        <dt>
+            ZIP
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_ZIP)
+        </dd>
+
+        <dt>
+            Phone
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_PHONE)
+        </dd>
+
+        <dt>
+            Since
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_SINCE)
+        </dd>
+
+        <dt>
+            Credit
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_CREDIT)
+        </dd>
+
+        <dt>
+            Credit Limit
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_CREDIT_LIM)
+        </dd>
+
+        <dt>
+            Discount
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_DISCOUNT)
+        </dd>
+
+        <dt>
+            Balance
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_BALANCE)
+        </dd>
+
+        <dt>
+            Year to Date Payment
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_YTD_PAYMENT)
+        </dd>
+
+        <dt>
+            Payment Count
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_PAYMENT_CNT)
+        </dd>
+
+        <dt>
+            Delevery Count
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_DELIVERY_CNT)
+        </dd>
+
+        <dt>
+            Miscellaneous
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.C_DATA)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model._id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
